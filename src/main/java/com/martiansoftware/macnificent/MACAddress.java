@@ -1,5 +1,6 @@
 package com.martiansoftware.macnificent;
 
+import java.net.NetworkInterface;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -66,6 +67,15 @@ public class MACAddress implements Comparable<MACAddress> {
         System.arraycopy(bytes, 0, this._bytes, 0, ETH_ALEN);
     }
 
+    /**
+     * Creates a new MACAddress from a given NetworkInterface
+     * @param ni the NetworkInterface for which the MACAddress is to be created
+     * @throws java.net.SocketException if thrown by NetworkInterface.getHardwareAddress()
+     */
+    public MACAddress(NetworkInterface ni) throws java.net.SocketException {
+        this(ni.getHardwareAddress());
+    }
+    
     /**
      * Creates a new MACAddress from the specified String.  The String must contain
      * ETH_ALEN hexadecimal-encoded _bytes, optionally separated by any whitespace
