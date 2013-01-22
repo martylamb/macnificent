@@ -5,7 +5,7 @@
     <groupId>com.martiansoftware</groupId>
     <artifactId>macnificent</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <name>MACnificent</name>
 
     <dependencies>

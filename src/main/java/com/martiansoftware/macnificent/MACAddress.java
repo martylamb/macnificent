@@ -63,7 +63,7 @@ public class MACAddress implements Comparable<MACAddress> {
      * @param _bytes the byte array representing the new MACAddress
      */
     public MACAddress(byte[] bytes) {
-        if (bytes.length != ETH_ALEN) throw new IllegalArgumentException("MACAddress bytes array must contain exactly " + ETH_ALEN + " bytes.");
+        if (bytes.length != ETH_ALEN) throw new IllegalArgumentException("MACAddress bytes array must contain exactly " + ETH_ALEN + " bytes.  Instead received " + bytes.length + " (" + hexString(bytes, bytes.length) + ")");
         System.arraycopy(bytes, 0, this._bytes, 0, ETH_ALEN);
     }
 
@@ -145,14 +145,18 @@ public class MACAddress implements Comparable<MACAddress> {
         return (_bytes[0] & FLAG_LOCAL) == FLAG_LOCAL;
     }
 
+    private String hexString(byte[] b, int len) {
+        StringBuilder buf = new StringBuilder();
+        for (int i = 0; i < len; ++i) {
+            if (i != 0) buf.append(":");
+            buf.append(String.format("%02x", b[i]));
+        }
+        return buf.toString();        
+    }
+    
     @Override
     public String toString() {
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0; i < ETH_ALEN; ++i) {
-            if (i != 0) buf.append(":");
-            buf.append(String.format("%02x", _bytes[i]));
-        }
-        return buf.toString();
+        return hexString(_bytes, ETH_ALEN);
     }
 
     @Override

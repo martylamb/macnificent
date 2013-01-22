@@ -96,4 +96,13 @@ public class MACAddressTest extends TestCase {
         assertTrue(!m1.equals(m3));
     }
 
+    public void testTooLong() {
+        byte[] b = {01, 02, 03, 04, 05, 06, 07};
+        try {
+            MACAddress m1 = new MACAddress(b);
+            fail("Accepted a 7-byte MAC.");
+        } catch (Exception expected) {
+            assertTrue(expected.getMessage().contains(" 7 ("));
+        }
+    }
 }
