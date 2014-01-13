@@ -173,7 +173,7 @@ public class OuiRegistry {
         java.io.LineNumberReader in = new java.io.LineNumberReader(new java.io.InputStreamReader(System.in));
         String s = in.readLine();
         while (s != null) {
-            MacAddress mac = new MacAddress(s);
+            MacAddress mac = new MacAddress(s); // can also create from byte[] or NetworkInterface
             Oui oui = reg.getOui(mac);
             System.out.println("   MAC Address:  " + mac);
             System.out.println("   isMulticast:  " + mac.isMulticast());
