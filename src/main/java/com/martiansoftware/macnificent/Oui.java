@@ -13,7 +13,7 @@ import java.util.Arrays;
  *
  * @author <a href="http://martiansoftware.com/contact.html">Marty Lamb</a>
  */
-public class OUI {
+public class Oui {
 
     /**
      * The three-byte OUI
@@ -27,16 +27,16 @@ public class OUI {
 
     /**
      * A "short name" automatically generated from the _manufacturer name by
-     * MACnificent.
+     * macnificent.
      */
     private transient String _shortName;
 
     /**
-     * Creates a new OUI
+     * Creates a new Oui
      * @param _bytes the 3-byte identifier assigned by IEEE
      * @param _manufacturer the full _manufacturer name as listed by IEEE
      */
-    public OUI(byte[] bytes, String manufacturer) {
+    public Oui(byte[] bytes, String manufacturer) {
         if (bytes.length != 3) throw new IllegalArgumentException("OUI byte array must contain exactly three bytes.");
         if (manufacturer == null) throw new NullPointerException("OUI manufacturer may not be null.");
         this._bytes = new byte[3];
@@ -45,11 +45,11 @@ public class OUI {
     }
 
     /**
-     * Creates a new OUI by reading it in MACnificent's binary format
-     * @param in the binary OUI source
+     * Creates a new OUI by reading it in macnificent's binary format
+     * @param in the binary Oui source
      * @throws IOException
      */
-    public OUI(DataInput in) throws IOException {
+    public Oui(DataInput in) throws IOException {
         _bytes = new byte[3];
         in.readFully(_bytes);
         _manufacturer = in.readUTF();
@@ -117,17 +117,6 @@ public class OUI {
                 | ((0x000000ff & bytes[2])));
     }
 
-    /**
-     * Stores this OUI in MACnificent's binary format.
-     *
-     * @param dout storage destination
-     * @throws IOException
-     */
-    public void store(DataOutput dout) throws IOException {
-        dout.write(_bytes, 0, 3);
-        dout.writeUTF(_manufacturer);
-    }
-
     @Override
     public String toString() {
         return String.format("%02x-%02x-%02x: [%s] %s", _bytes[0], _bytes[1], _bytes[2], getShortName(), _manufacturer);
@@ -146,7 +135,7 @@ public class OUI {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final OUI other = (OUI) obj;
+        final Oui other = (Oui) obj;
         if (!Arrays.equals(this._bytes, other._bytes)) {
             return false;
         }

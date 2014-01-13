@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  *
  * @author <a href="http://martiansoftware.com/contact.html">Marty Lamb</a>
  */
-public class MACAddress implements Comparable<MACAddress> {
+public class MacAddress implements Comparable<MacAddress> {
 
     /**
      * Length of a MAC address, in _bytes
@@ -52,38 +52,38 @@ public class MACAddress implements Comparable<MACAddress> {
     }
             
     /**
-     * The _bytes comprising this MACAddress.
+     * The _bytes comprising this MacAddress.
      */
-    private byte[] _bytes = new byte[ETH_ALEN];
+    private final byte[] _bytes = new byte[ETH_ALEN];
 
     /**
-     * Creates a new MACAddress by copying the specified byte array (which must
+     * Creates a new MacAddress by copying the specified byte array (which must
      * contain ETH_ALEN _bytes)
      *
-     * @param _bytes the byte array representing the new MACAddress
+     * @param _bytes the byte array representing the new MacAddress
      */
-    public MACAddress(byte[] bytes) {
-        if (bytes.length != ETH_ALEN) throw new IllegalArgumentException("MACAddress bytes array must contain exactly " + ETH_ALEN + " bytes.  Instead received " + bytes.length + " (" + hexString(bytes, bytes.length) + ")");
+    public MacAddress(byte[] bytes) {
+        if (bytes.length != ETH_ALEN) throw new IllegalArgumentException("MacAddress bytes array must contain exactly " + ETH_ALEN + " bytes.  Instead received " + bytes.length + " (" + hexString(bytes, bytes.length) + ")");
         System.arraycopy(bytes, 0, this._bytes, 0, ETH_ALEN);
     }
 
     /**
-     * Creates a new MACAddress from a given NetworkInterface
-     * @param ni the NetworkInterface for which the MACAddress is to be created
+     * Creates a new MacAddress from a given NetworkInterface
+     * @param ni the NetworkInterface for which the MacAddress is to be created
      * @throws java.net.SocketException if thrown by NetworkInterface.getHardwareAddress()
      */
-    public MACAddress(NetworkInterface ni) throws java.net.SocketException {
+    public MacAddress(NetworkInterface ni) throws java.net.SocketException {
         this(ni.getHardwareAddress());
     }
     
     /**
-     * Creates a new MACAddress from the specified String.  The String must contain
+     * Creates a new MacAddress from the specified String.  The String must contain
      * ETH_ALEN hexadecimal-encoded _bytes, optionally separated by any whitespace
      * or any of '-', ':', '.', or '_'.  Whatever separator is used (if any)
      * must be used consistently within the String.  Leading and trailing
      * whitespace are ignored.
      *
-     * For example, the following are valid MACAddress strings:
+     * For example, the following are valid MacAddress strings:
      * <ul>
      * <li>11:22:33:44:55:66</li>
      * <li>1a-2b-3c-4d-5e-6f</li>
@@ -91,7 +91,7 @@ public class MACAddress implements Comparable<MACAddress> {
      * <li>AA BB CC 11 22 33</li>
      * </ul>
      *
-     * The following are NOT valid MACAddress strings:
+     * The following are NOT valid MacAddress strings:
      * <ul>
      * <li>11:22-33:44-55:66</li>
      * <li>1a2b3c 4d5e6f</li>
@@ -100,9 +100,9 @@ public class MACAddress implements Comparable<MACAddress> {
      * </ul>
      * @param s
      */
-    public MACAddress(String s) {
+    public MacAddress(String s) {
         Matcher m = MACREGEX.matcher(s);
-        if (!m.matches()) throw new IllegalArgumentException("Invalid MACAddress string: \"" + s + "\"");
+        if (!m.matches()) throw new IllegalArgumentException("Invalid MacAddress string: \"" + s + "\"");
         int groupIndex;
         for (int i = 0; i < ETH_ALEN; ++i) {
             groupIndex = i + 1;
@@ -130,16 +130,16 @@ public class MACAddress implements Comparable<MACAddress> {
     }
 
     /**
-     * Indicates whether this MACAddress has its multicast bit set
-     * @return true if this MACAddress has its multicast bit set
+     * Indicates whether this MacAddress has its multicast bit set
+     * @return true if this MacAddress has its multicast bit set
      */
     public boolean isMulticast() {
         return (_bytes[0] & FLAG_MCAST) == FLAG_MCAST;
     }
 
     /**
-     * Indicates whether this MACAddress has its local bit set
-     * @return true if this MACAddress has its local bit set
+     * Indicates whether this MacAddress has its local bit set
+     * @return true if this MacAddress has its local bit set
      */
     public boolean isLocal() {
         return (_bytes[0] & FLAG_LOCAL) == FLAG_LOCAL;
@@ -167,7 +167,7 @@ public class MACAddress implements Comparable<MACAddress> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final MACAddress other = (MACAddress) obj;
+        final MacAddress other = (MacAddress) obj;
         if (!Arrays.equals(this._bytes, other._bytes)) {
             return false;
         }
@@ -182,7 +182,7 @@ public class MACAddress implements Comparable<MACAddress> {
     }
 
     @Override
-    public int compareTo(MACAddress o) {
+    public int compareTo(MacAddress o) {
         int r;
         for (int i = 0; i < ETH_ALEN; ++i) {
             r = _bytes[i] - o._bytes[i];
