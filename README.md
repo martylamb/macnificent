@@ -8,9 +8,9 @@ in Java. In addition to a lightweight MacAddress class and parser, this
 includes IEEE OUI registry information and a formatter for MAC addresses 
 that displays an abbreviated form of the device's manufacturer's name.
 
-If you're using this project, you probably also want to use
+The OuiRegistry class needs a data file at runtime.  Add
 [macnificent-plugin](https://github.com/martylamb/macnificent-plugin)
-to generate the data file for your project.
+to your pom.xml to generate this data file for your project.
 
 Example Usage:
 --------------
@@ -65,7 +65,7 @@ Add the dependency to your project:
 	<dependency>
 		<groupId>com.martiansoftware</groupId>
 		<artifactId>macnificent</artifactId>
-		<version>0.2.0-SNAPSHOT</version>
+		<version>0.2.0</version>
 		<scope>compile</scope>
 	</dependency>
 </dependencies>
