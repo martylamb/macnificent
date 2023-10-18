@@ -1,5 +1,7 @@
+package com.martiansoftware.macnificent;
+
 /*
- * (C) Copyright Martian Software, Inc.
+ * Copyright (C) Martian Software, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ * SPDX-License-Identifier: Apache-2.0
+ *
  */
-
-package com.martiansoftware.macnificent;
 
 import java.io.DataOutput;
 import java.io.DataOutputStream;
@@ -43,7 +45,8 @@ import java.util.regex.Pattern;
  * To run this, execute something along the lines of:
  * <code>cat oui.txt | mvn -q exec:java -Dexec.mainClass=com.martiansoftware.macnificent.GenerateDataFile > macnificent.dat</code>
  * <code>cat oui.txt | mvn -q exec:java -Dexec.mainClass=com.martiansoftware.macnificent.GenerateDataFile -Dexec.args="$(date -Iseconds)" > macnificent.dat</code>
- * @author mlamb
+ *
+ * @author <a href="http://martylamb.com">Marty Lamb</a>
  */
 public class GenerateDataFile {
     

@@ -1,5 +1,7 @@
+package com.martiansoftware.macnificent;
+
 /*
- * (C) Copyright 2012-2016 Martian Software, Inc.
+ * Copyright (C) Martian Software, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ * SPDX-License-Identifier: Apache-2.0
+ *
  */
 
-package com.martiansoftware.macnificent;
-
 import java.io.DataInput;
-import java.io.DataOutput;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -28,7 +29,7 @@ import java.util.Arrays;
  * _manufacturer.  Most programmers won't have create these directly, but will
  * instead obtain them from an OUIRegistry.
  *
- * @author <a href="http://martiansoftware.com/contact.html">Marty Lamb</a>
+ * @author <a href="http://martylamb.com">Marty Lamb</a>
  */
 public class Oui {
 

@@ -1,5 +1,7 @@
+package com.martiansoftware.macnificent;
+
 /*
- * (C) Copyright 2012-2016 Martian Software, Inc.
+ * Copyright (C) Martian Software, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ * SPDX-License-Identifier: Apache-2.0
+ *
  */
-
-package com.martiansoftware.macnificent;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -28,7 +30,7 @@ import java.util.Map;
  * lookup an OUI based upon a MacAddress, and provide reformatted MAC
  * address Strings that use the manufacturer's name.
  *
- * @author <a href="http://martiansoftware.com/contact.html">Marty Lamb</a>
+ * @author <a href="http://martylamb.com">Marty Lamb</a>
  */
 public class OuiRegistry {
 

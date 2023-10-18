@@ -1,5 +1,7 @@
+package com.martiansoftware.macnificent;
+
 /*
- * (C) Copyright 2012-2016 Martian Software, Inc.
+ * Copyright (C) Martian Software, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,15 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ * SPDX-License-Identifier: Apache-2.0
+ *
  */
-
-package com.martiansoftware.macnificent;
 
 import java.util.Date;
 
 /**
  *
- * @author mlamb
+ * @author <a href="http://martylamb.com">Marty Lamb</a>
  */
 public class TestConstants {
     public static final int TEST_REGISTRY_SIZE = 14238;
