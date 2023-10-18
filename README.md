@@ -8,7 +8,12 @@ in Java. In addition to a lightweight MacAddress class and parser, this
 includes IEEE OUI registry information and a formatter for MAC addresses 
 that displays an abbreviated form of the device's manufacturer's name.
 
-The OuiRegistry class needs a data file at runtime.  Add
+The OuiRegistry class needs a data file at runtime, which it attempts to load from its ClassLoader as a resource with the name `macnificent.dat`.  This can be created by downloading the raw OUI-48 registry from [the IEEE website](https://standards-oui.ieee.org/oui/oui.txt) and executing the following command (see `GenerateDataFile.java` for more info):
+
+```bash
+cat oui.txt | mvn -q exec:java -Dexec.mainClass=com.martiansoftware.macnificent.GenerateDataFile > macnificent.dat
+```
+
 [macnificent-plugin](https://github.com/martylamb/macnificent-plugin)
 to your pom.xml to generate this data file for your project.
 
