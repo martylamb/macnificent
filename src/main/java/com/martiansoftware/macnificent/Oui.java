@@ -51,8 +51,8 @@ public class Oui {
 
     /**
      * Creates a new Oui
-     * @param _bytes the 3-byte identifier assigned by IEEE
-     * @param _manufacturer the full _manufacturer name as listed by IEEE
+     * @param bytes the 3-byte identifier assigned by IEEE
+     * @param manufacturer the full _manufacturer name as listed by IEEE
      */
     public Oui(byte[] bytes, String manufacturer) {
         if (bytes.length != 3) throw new IllegalArgumentException("OUI byte array must contain exactly three bytes.");
@@ -65,7 +65,6 @@ public class Oui {
     /**
      * Creates a new OUI by reading it in macnificent's binary format
      * @param in the binary Oui source
-     * @throws IOException
      */
     public Oui(DataInput in) throws IOException {
         _bytes = new byte[3];
@@ -126,7 +125,7 @@ public class Oui {
      * hash code is computed as the unsigned 24-bit value contained in the OUI
      * in network byte order.
      *
-     * @param _bytes an array containing the 3-byte OUI identifier
+     * @param bytes an array containing the 3-byte OUI identifier
      * @return a hash code
      */
     public static int hashCode(byte[] bytes) {

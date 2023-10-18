@@ -55,8 +55,6 @@ public class OuiRegistry {
      * Creates a new OUIRegistry by reading the IEEE OUI data from the
      * classpath resource DEFAULT_RESOURCE ("macnificent.dat").  This requires a
      * Macnificent data jar file in the application's classpath.
-     *
-     * @throws IOException
      */
     public OuiRegistry() throws IOException {
         InputStream in = OuiRegistry.class.getClassLoader().getResourceAsStream(DEFAULT_RESOURCE);
@@ -71,7 +69,6 @@ public class OuiRegistry {
      * add the macnificent plugin to their build to create the data file.
      *
      * @param ouiData the IEEE OUI data source in macnificent's binary format
-     * @throws IOException
      */
     public OuiRegistry(InputStream ouiData) throws IOException {
         _lastModified = init(ouiData);

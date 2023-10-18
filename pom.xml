@@ -1,19 +1,49 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
+    
     <groupId>com.martiansoftware</groupId>
     <artifactId>macnificent</artifactId>
-    <packaging>jar</packaging>
     <version>0.2.2-SNAPSHOT</version>
     <name>macnificent</name>
-
+    
+    <description>
+        Macnificent is a set of utility classes for working with MAC addresses in Java. 
+        In addition to a lightweight MacAddress class and parser, this includes IEEE 
+        OUI registry information and a formatter for MAC addresses that displays an 
+        abbreviated form of the device's manufacturer's name.
+    </description>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+    
+    <url>https://github.com/martylamb/macnificent</url>
+    
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
-
+    
+    <developers>
+        <developer>
+            <name>Marty Lamb</name>
+            <email>mlamb@martiansoftware.com</email>
+            <organization>Martian Software, Inc.</organization>
+            <organizationUrl>http://martiansoftware.com</organizationUrl>
+        </developer>
+    </developers>
+    
+    <scm>
+        <url>https://github.com/martylamb/macnificent</url>
+        <connection>scm:git:git://github.com/martylamb/macnificent.git</connection>
+        <developerConnection>scm:git:git@github.com:martylamb/macnificent.git</developerConnection>
+    </scm>
+    
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -26,18 +56,16 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.11.0</version>
                 <configuration>
                     <source>8</source>
                     <target>8</target>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -47,34 +75,59 @@
                     </archive>
                 </configuration>
             </plugin>
-        </plugins>
-        
-        <extensions>
-            <!-- needed for ftp deploy -->
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ftp</artifactId>
-                <version>2.6</version>
-            </extension>
-        </extensions>
-        
-    </build>
-
-    <reporting>
-        <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.4</version>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <source>8</source>
+                    <failOnWarnings>false</failOnWarnings>
+                    <doclint>none</doclint>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.13</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                </configuration>
             </plugin>
         </plugins>
-    </reporting>
-
-    <distributionManagement>
-        <repository>
-            <id>mvn.martiansoftware.com</id>
-            <url>ftp://mvn.martiansoftware.com</url>
-        </repository>
-    </distributionManagement>
-
+    </build>
 </project>

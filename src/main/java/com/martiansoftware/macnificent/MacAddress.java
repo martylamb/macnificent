@@ -79,7 +79,7 @@ public class MacAddress implements Comparable<MacAddress> {
      * Creates a new MacAddress by copying the specified byte array (which must
      * contain ETH_ALEN _bytes)
      *
-     * @param _bytes the byte array representing the new MacAddress
+     * @param bytes the byte array representing the new MacAddress
      */
     public MacAddress(byte[] bytes) {
         if (bytes.length != ETH_ALEN) throw new IllegalArgumentException("MacAddress bytes array must contain exactly " + ETH_ALEN + " bytes.  Instead received " + bytes.length + " (" + hexString(bytes, bytes.length) + ")");

@@ -76,6 +76,13 @@ public class GenerateDataFile {
         System.err.format("Added %d OUIs.", ouicount);        
     }
     
+    /**
+     * Utility for processing an IEEE MA-L data file (as obtained
+     * canonically from http://standards-oui.ieee.org/oui/oui.txt) on stdin
+     * and generating a binary data file suitable for use by OuiRegistry on
+     * stdout.
+     * @param args a single optional argument: the last modified time of the OUI database in ISO8601 format, e.g. as provided by 'date -Iseconds'.\n"
+     */
     public static void main(String[] args) throws IOException {
         long lastModified = System.currentTimeMillis();
         
