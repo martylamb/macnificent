@@ -46,22 +46,6 @@ public static void main(String[] args) throws Exception {
 }
 ```
 
-Add the repository to your project:
------------------------------------
-
-```xml
-<project>
-	...
-    <repositories>
-        <repository>
-            <id>martiansoftware</id>
-            <url>http://mvn.martiansoftware.com</url>
-        </repository>
-    </repositories> 
-	...
-</project>
-```
-
 Add the dependency to your project:
 -----------------------------------
 
@@ -70,7 +54,7 @@ Add the dependency to your project:
 	<dependency>
 		<groupId>com.martiansoftware</groupId>
 		<artifactId>macnificent</artifactId>
-		<version>0.2.0</version>
+		<version>1.0.0</version>
 		<scope>compile</scope>
 	</dependency>
 </dependencies>
