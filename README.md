@@ -14,9 +14,6 @@ The OuiRegistry class needs a data file at runtime, which it attempts to load fr
 cat oui.txt | mvn -q exec:java -Dexec.mainClass=com.martiansoftware.macnificent.GenerateDataFile > macnificent.dat
 ```
 
-[macnificent-plugin](https://github.com/martylamb/macnificent-plugin)
-to your pom.xml to generate this data file for your project.
-
 Example Usage:
 --------------
 
